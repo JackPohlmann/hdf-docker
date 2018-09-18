@@ -84,10 +84,15 @@ RUN set -ex ;\
     apk del --no-cache --purge .build-deps ;\
     rm -rf /var/cache/apk/*
     # pip  install package
-    RUN pip install --upgrade pip
-    RUN pip install aiohttp
+    RUN pip install --upgrade pip   ; \
+        pip install numpy           ; \
+        pip install aiobotocore     ; \
+        pip install pytz            ; \
+        pip install requests        ; \
+        pip install psutil
+
 # since we will be "always" mounting the volume, we can set this up
 ENTRYPOINT ["/usr/bin/dumb-init"]
-CMD ["python"]
+#CMD ["python"]
 
 
