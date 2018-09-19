@@ -82,7 +82,11 @@ RUN set -ex ;\
 
     # remove build dependencies and any leftover apk cache
     apk del --no-cache --purge .build-deps ;\
-    rm -rf /var/cache/apk/*
+    rm -rf /var/cache/apk/* ;\
+
+    # Need to re-get sqlite3?
+    apk add --no-cache sqlite-dev
+    
     # pip  install package
     RUN pip install --upgrade pip   ; \
         pip install numpy           ; \
