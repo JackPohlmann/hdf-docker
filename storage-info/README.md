@@ -17,12 +17,40 @@ $ docker run --rm hdfgroup/store_info.py
 Produce HDF5 dataset storage map with checksums in JSON for one HDF5 file:
 
 ```bash
-$ docker run --rm -v DIR:/data ajelenak/store_info.py -j -c /data/example.h5
+$ docker run --rm -v DIR:/data hdfgroup/store_info.py -j -c /data/example.h5
 ```
 
 where `DIR` is the directory where the HDF5 file is located.
 
-The JSON output looks like:
+For a file:
+
+```
+$ h5dump -Hp example.h5
+HDF5 "example.h5" {
+GROUP "/" {
+   DATASET "DS1" {
+      DATATYPE  H5T_STD_I32LE
+      DATASPACE  SIMPLE { ( 6, 8 ) / ( 6, 8 ) }
+      STORAGE_LAYOUT {
+         CHUNKED ( 4, 4 )
+         SIZE 256
+      }
+      FILTERS {
+         NONE
+      }
+      FILLVALUE {
+         FILL_TIME H5D_FILL_TIME_IFSET
+         VALUE  H5D_FILL_VALUE_DEFAULT
+      }
+      ALLOCATION_TIME {
+         H5D_ALLOC_TIME_INCR
+      }
+   }
+}
+}
+```
+
+the JSON output looks like:
 
 ```json
 {
