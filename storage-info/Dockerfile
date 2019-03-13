@@ -23,9 +23,10 @@ RUN apk add --no-cache --virtual .build-deps \
  && cd .. \
  && rm -rf ${HDF5_MAJOR_REL}.${HDF5_MINOR_REL}* \
 # Install h5py Python dependencies...
- && pip install numpy Cython six pkgconfig \
+ && pip --no-cache-dir install -U pip \
+ && pip --no-cache-dir install numpy Cython six pkgconfig \
 # Install h5py from source...
- && pip install git+https://github.com/ajelenak-thg/h5py.git@chunk-query \
+ && pip --no-cache-dir install git+https://github.com/ajelenak-thg/h5py.git@chunk-query \
  && cd /usr/local/bin \
  && curl -O https://raw.githubusercontent.com/ajelenak-thg/h5py/chunk-query/examples/store_info.py \
  && apk del .build-deps
