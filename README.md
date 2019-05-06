@@ -4,7 +4,13 @@ This repository contains Dockerfiles for various HDF-related containers.
 
 Dockerfiles are text files that contain the instructions for building a Docker image. 
 
+## JP Fork
+
+The main difference for this fork is the implementation of h5py for HDF5 1.10.5 and Python 3.7.3 (stable release as of 5/2019).
+Check the README in the h5py directory for more information. All other directories remain the same.
+
 ## Installation
+
 The containers were all built using Docker 1.10.x.  
 Go to https://www.docker.com for information on how to install docker.
 

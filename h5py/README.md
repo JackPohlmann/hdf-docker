@@ -6,3 +6,7 @@
 * Python 3.7.3
 * Numpy
 * h5py
+
+## Instructions
+
+* Can comment out the `make check` and `make check-install` lines for faster compilation.
