@@ -2,7 +2,7 @@
 
 ## Ingredients:
 
-* HDF5 Library
-* Python 3.5
+* HDF5-1.10.5 Library
+* Python 3.7.3
 * Numpy
 * h5py

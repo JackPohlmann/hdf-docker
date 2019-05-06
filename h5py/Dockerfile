@@ -1,12 +1,12 @@
-FROM python:3.5
+FROM python:3
 MAINTAINER John Readey <jreadey@hdfgroup.org>
-ENV HDF5_MINOR_REL       hdf5-1.8.16 
-ENV HDF5_SRC_URL   http://www.hdfgroup.org/ftp/HDF5/releases                  
+ENV HDF5_MINOR_REL       hdf5-1.10.5 
+ENV HDF5_SRC_URL   http://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10                  
 RUN cd /tmp                                                                        ; \ 
-    echo "Getting: ${HDF5_SRC_URL}/${HDF5_MINOR_REL}/src/${HDF5_MINOR_REL}.tar"                ; \ 
-    wget ${HDF5_SRC_URL}/${HDF5_MINOR_REL}/src/${HDF5_MINOR_REL}.tar                           ; \ 
-    tar -xvf ${HDF5_MINOR_REL}.tar --directory /usr/local/src                      ; \
-    rm ${HDF5_MINOR_REL}.tar                                                       ; \
+    echo "Getting: ${HDF5_SRC_URL}/${HDF5_MINOR_REL}/src/${HDF5_MINOR_REL}.tar.gz"                ; \ 
+    wget ${HDF5_SRC_URL}/${HDF5_MINOR_REL}/src/${HDF5_MINOR_REL}.tar.gz                           ; \ 
+    tar -xvf ${HDF5_MINOR_REL}.tar.gz --directory /usr/local/src                      ; \
+    rm ${HDF5_MINOR_REL}.tar.gz                                                       ; \
     cd /usr/local/src/${HDF5_MINOR_REL}                                            ; \
     ./configure --prefix=/usr/local/hdf5                                           ; \
     make                                                                           ; \
