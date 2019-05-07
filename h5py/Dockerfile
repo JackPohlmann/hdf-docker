@@ -8,16 +8,11 @@ RUN cd /tmp                                                                     
     tar -xvf ${HDF5_MINOR_REL}.tar.gz --directory /usr/local/src                      ; \
     rm ${HDF5_MINOR_REL}.tar.gz                                                       ; \
     cd /usr/local/src/${HDF5_MINOR_REL}                                            ; \
-    ./configure --prefix=/usr/local/hdf5                                           ; \
+    ./configure --enable-fortran --prefix=/usr/local/hdf5                          ; \
     make                                                                           ; \
-    make check                                                                     ; \
+    make check									   ; \
     make install                                                                   ; \
     make check-install                                                             ; \
     for f in /usr/local/hdf5/bin/* ; do ln -s $f /usr/local/bin ; done             ; \
-    pip install numpy                                                              ; \  
-    cd /usr/local/src                                                              ; \
-    git clone https://github.com/h5py/h5py.git                                     ; \
-    cd h5py                                                                        ; \
-    export HDF5_DIR=/usr/local/hdf5                                                ; \
-    python setup.py build                                                          ; \
-    python setup.py install            
+    pip install numpy                                                              ; \
+    pip install --no-binary=h5py h5py 
